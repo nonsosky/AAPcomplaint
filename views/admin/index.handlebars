@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 sidebar ">
+            <ul class="nav flex-column mt-3">
+                <li class="nav-item mb-1">
+                    <a class="nav-link btn btn-sm btn-warning" href="/admin/">
+                      All Complaints
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mb-1 btn btn-sm btn-warning" href="/admin/todays/complaints/">
+                        Todays Complaints
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mb-1 btn btn-sm btn-warning" href="/admin/resolved/complaints/">
+                        Resolved Complaints
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10 main-pane mt-2" style="min-height:410px;">
+            {{#if allComplaints}}
+            {{#each allComplaints}}
+            <div class="panel">
+                <p>{{complaint}}</p>
+                <p>by <em>{{firstName}} {{lastName}}</em></p>
+                <div class="box-right">
+                    
+                    {{#if status}}
+                    <a href="/admin/view/chat/{{id}}" class="btn btn-warning btn-sm">View Chat</a>
+                    {{else}}
+                    <a href="/admin/chat/{{id}}" class="btn btn-warning btn-sm">Chat</a>
+                    <a href="/admin/complaint/resolve/{{id}}" class="btn btn-success btn-sm">Resolve</a>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+            {{else if todaysComplaints}}
+            {{#each todaysComplaints}}
+            <div class="panel">
+                <p>{{complaint}}</p>
+                <p>by <em>{{firstName}} {{lastName}}</em></p>
+                <div class="box-right">
+                    
+                    {{#if status}}
+                    <a href="/admin/view/chat/{{id}}" class="btn btn-warning btn-sm">View Chat</a>
+                    {{else}}
+                    <a href="/admin/chat/{{id}}" class="btn btn-warning btn-sm">Chat</a>
+                    <a href="/admin/complaint/resolve/{{id}}" class="btn btn-success btn-sm">Resolve</a>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+            {{else if resolvedComplaints}}
+            {{#each resolvedComplaints}}
+            <div class="panel">
+                <p>{{complaint}}</p>
+                <p>by <em>{{firstName}} {{lastName}}</em></p>
+                <div class="box-right">
+                    
+                    {{#if status}}
+                    <a href="/admin/view/chat/{{id}}" class="btn btn-warning btn-sm">View Chat</a>
+                    {{else}}
+                    <a href="/admin/chat/{{id}}" class="btn btn-warning btn-sm">Chat</a>
+                    <a href="/admin/complaint/resolve/{{id}}" class="btn btn-success btn-sm">Resolve</a>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="alert alert-warning">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <p>No data</p>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

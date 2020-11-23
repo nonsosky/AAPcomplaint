@@ -1,0 +1,138 @@
+<nav class="navbar navbar-expand-sm green mb-2 navbar-dark on-top-fixed">
+    <!-- Brand -->
+    <a class="navbar-brand" href="/">
+        <img src="/img/AAP_logo.png" class="logo" alt="imopoly">
+    </a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link btn" href="/">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn" href="/aboutus/index">ABOUT</a>
+            </li>
+            {{#if user}}
+            {{#if user.user_type}}
+             <li class="nav-item">
+                <a class="nav-link btn yellow mr-1" href="#" data-toggle="modal" data-target="#complaint">
+                    Make Complaint
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn yellow mr-1" href="/student/mycomplaints">My Complaint</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link mr-1" href="#" data-toggle="dropdown">
+                    <img src="/img/avatar.jpg" class="avatar"/>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right text-center bg-dark menu">
+                    <a href="/student/index" class="dropdown-item text-light">View profile</a>
+                    <a href="#" class="dropdown-item text-light">Change Photo</a>
+                    <a href="/logout/" class="dropdown-item text-light">Logout</a>
+                </div>
+            </li>
+            {{else}}
+            <li class="nav-item mb-1">
+                <a class="nav-link btn yellow mr-1" href="/admin/">Dashboard</a>
+            </li>
+            <li class="nav-item mb-1">
+                <a class="nav-link btn yellow mr-1" href="/logout">Logout</a>
+            </li>
+            {{/if}}
+            {{else}}
+            <li class="nav-item mb-1">
+                <a class="nav-link btn btn-full-sm" href="/student/signup">SIGNUP</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-ghost-sm" href="/student/signin">LOG IN</a>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="signin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Login</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            {{!<div class="modal-body">
+                <div class="row">
+                    <div class="col-md-9 mx-auto">
+                        <div class="card card-body">
+                            <h3 class="text-center">Student Login</h3>
+                            <form method="POST" action="/student/signin">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="emailAddress" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
+                                <button type="submit" class="btn btn-warning">Log in</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="complaint">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Make Complaint</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/student/make/complaints" method="post">
+                    <div class="form-group">
+                        <textarea class="form-control" autofocus="true" name="complaints" rows="5" maxlength="500"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-ptimary">Complain</button>
+                </form>
+            </div>
+
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="nav-bottom"></div>
